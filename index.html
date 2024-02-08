@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Invitation</title>
 </head>
+
 <body>
     <div class="hero">
         <div class="card">
@@ -14,117 +16,131 @@
             <input type="text" placeholder=" date" id="date">
             <label for="input-file">Update image</label>
             <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file">
-            <div id="button"> 
+            <div id="button">
                 <input type="text" placeholder="QR code (optional)" id="qrtext">
                 <button onclick="AddItems()">Create card</button>
             </div>
-            
         </div>
 
         <div class="card2">
-            <h1 id="idname">Elon Musk</h1>
-            <p id="idevent">Birthday Party </p> 
-           <div id="imgs">
-            <img src="customer-care.png" class="img" id="foto" >
-            <img src="" id="qrImage" alt="">
-           </div>
-           <p id="iddate">10th January</p>
+            <h1 id="idname" class="name">Elon Musk</h1>
+            <p id="idevent" class="event">Birthday Party </p>
+            <div id="imgs">
+                <img src="customer-care.png" class="img" id="foto">
+                <img src="" id="qrImage" class="qrimg" alt="">
+            </div>
+            <p id="iddate" class="date"></p>
         </div>
     </div>
 
     <script>
-        let pics = document.getElementById("foto")
-        let file = document.getElementById("input-file")
-        let name = document.getElementById("name")
-        let idname = document.getElementById("idname")
-        let event = document.getElementById("event")
-        let dateinput = document.getElementById("date")
-        let idevent = document.getElementById("idevent")
+        let pics = document.getElementById("foto");
+        let file = document.getElementById("input-file");
+        let name = document.getElementById("name");
+        let idname = document.getElementById("idname");
+        let event = document.getElementById("event");
+        let dateinput = document.getElementById("date");
+        let idevent = document.getElementById("idevent");
 
+        file.onchange = function () {
+            pics.src = URL.createObjectURL(file.files[0]);
+        };
 
-        file.onchange = function(){
-            pics.src = URL.createObjectURL(file.files[0])
-        }
-        
-        let imgBox = document.getElementById("imgBox")
-        let qrImage = document.getElementById("qrImage")
-        let qrtext = document.getElementById("qrtext")
+        let imgBox = document.getElementById("imgBox");
+        let qrImage = document.getElementById("qrImage");
+        let qrtext = document.getElementById("qrtext");
 
-        let date = new Date().getDate()
-        let month = new Date().getMonth()
-        let year = new Date().getFullYear()
-        let iddate = document.getElementById("iddate")
-        iddate.innerHTML = `${day} ${month} ${year}`
-        switch(month){
+        let date = new Date().getDate();
+        let month = new Date().getMonth();
+        let year = new Date().getFullYear();
+        let iddate = document.getElementById("iddate");
+        iddate.innerHTML = `${date} ${month} ${year}`;
+
+        switch (month) {
             case 1:
-            month = "January"
+                month = "January";
+                break;
             case 2:
-            month = "February"
+                month = "February";
+                break;
             case 3:
-            month = "March"
+                month = "March";
+                break;
             case 4:
-            month = "April"
+                month = "April";
+                break;
             case 5:
-            month = "May"
+                month = "May";
+                break;
             case 6:
-            month = "June"
+                month = "June";
+                break;
             case 7:
-            month = "July"
+                month = "July";
+                break;
             case 8:
-            month = "August"
+                month = "August";
+                break;
             case 9:
-            month = "September"
+                month = "September";
+                break;
             case 10:
-            month = "October"
+                month = "October";
+                break;
+            case 11:
+                month = "November";
+                break;
+            case 12:
+                month = "December";
+                break;
         }
-        function CreateDate(){
-            iddate.innerHTML = dateinput.value
-        }
-        
 
-        function AddItems(){
-            if(name.value != ""){
-            idname.innerHTML = name.value
-            idname.style.opacity = "1"
-            idname.style.transition = "opacity 1s"
-            idevent.innerHTML = event.value
-            idevent.style.opacity = "1"
-            idevent.style.transition = "opacity 1s"
-            idevent.style.textTransform = "capitalize"
-            idname.style.textTransform = "capitalize"}
-            else{
-                window.alert("Cannot be empty")
-                name.style.border = "3px solid red"
-                event.style.border = "3px solid red"
-                event.style.transition = "border 1s"
-                name.style.transition = "border 1s"
+        function CreateDate() {
+            iddate.innerHTML = dateinput.value;
+        }
+
+        function AddItems() {
+            if (name.value != "") {
+                idname.innerHTML = name.value;
+                idname.style.opacity = "1";
+                idname.style.transition = "opacity 1s";
+                idevent.innerHTML = event.value;
+                idevent.style.opacity = "1";
+                idevent.style.transition = "opacity 1s";
+                idevent.style.textTransform = "capitalize";
+                idname.style.textTransform = "capitalize";
+            } else {
+                window.alert("Cannot be empty");
+                name.style.border = "3px solid red";
+                event.style.border = "3px solid red";
+                event.style.transition = "border 1s";
+                name.style.transition = "border 1s";
                 setTimeout(() => {
-                name.style.border = "1px solid black"
-                event.style.border = "1px solid black"
-                vent.style.transition = "border 1s"
-                name.style.transition = "border 1s"
+                    name.style.border = "1px solid black";
+                    event.style.border = "1px solid black";
+                    event.style.transition = "border 1s";
+                    name.style.transition = "border 1s";
                 }, 2000);
             }
-            
-            CreateDate()
-            qrImage.style.display = "block"
-            qrImage.style.height = "180px"
-            qrImage.style.transition = "height 2s"
 
-            function AddItems(){
-            if (qrtext.value.length > 0){
-                qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data= "+ qrtext.value
+            CreateDate();
+            qrImage.style.display = "block";
+            qrImage.style.height = "180px";
+            qrImage.style.marginLeft = "20px";
+            qrImage.style.marginTop = "20px";
+
+
+            if (qrtext.value.length > 0) {
+                qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + qrtext.value;
                 imgBox.classList.add("show-img");
-            }else{
+            } else {
                 qrtext.classList.add('error');
-                setTimeout(()=>{
-                    qrtext.classList.remove('error');  
-                },1000)
+                setTimeout(() => {
+                    qrtext.classList.remove('error');
+                }, 1000);
             }
-             }
         }
-        
-
     </script>
 </body>
+
 </html>
